@@ -1,0 +1,19 @@
+version: '3.5'
+services:
+  api1:
+    image: applica-corp:latest
+    restart: always
+    container_name: applica-corp-api
+    ports:
+        - "8080:8080"
+    expose:
+        - "8080"
+    deploy:
+      resources:
+        limits:
+          cpus: '.5'
+          memory: '500MB'
+
+networks:
+    default:
+        driver: bridge

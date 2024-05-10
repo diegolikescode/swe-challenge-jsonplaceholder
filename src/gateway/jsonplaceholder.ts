@@ -5,9 +5,14 @@ export async function requestPosts(start: number, size: number): Promise<Post[]|
     const url = `${BASE_URL_REQUEST}/posts?_start=${start}&_limit=${size}`
     try {
         const resp = await fetch(url)
-        if (!resp.ok || resp.status !== 404) {
+        if (!resp.ok && resp.status !== 404) {
             console.log('error fetching from', url, 'RESPONSE', resp)
             return new Error(`error fetching from ${url}`)
+        }
+
+        if (resp.status === 404) {
+            console.log('error fetching from', url, 'NOT FOUND', resp)
+            return []
         }
 
         try {
