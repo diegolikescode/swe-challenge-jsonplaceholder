@@ -37,3 +37,8 @@ export type Post = {
   body: string
 }
 
+export type ResponseBody = Post & {
+    user: User
+    comments: Comment[]
+}
+
