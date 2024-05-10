@@ -1,5 +1,13 @@
 # APPLICA CORP SWE CHALLENGE
 
+## HOW TO RUN
+
+- if you have docker and can run a ``make`` command, just run ``make up`` and it will build a docker image with the API and run it on the port ``8080``.
+- you can use ``make down`` to clean the volumes that the docker-compose created.
+- if you prefer to run the application more traditionally, I've used NodeJS v18.16.0 and a ``nvm use`` in the root directory will setup the node version if needed.
+
+> if you guys and/or gals wish a Golang version, just say the word. I made it with NodeJS because of the Job Description.
+
 ## PROBLEM
 
 - You need to implement a simple RESTful API that will return a detailed list of blog
