@@ -40,10 +40,7 @@ an empty list.
 pagination parameters.
 500 - Any other server error.
 
-## IN OTHER WORDS
-
-- I need to make an API that has 1 endpoint and the endpoint must respect the requirements defined in the **problem section**
-
 ## OBSERVATIONS
 
 - [this issue](https://github.com/typicode/jsonplaceholder/issues/65) showed me how to paginate the response
+
