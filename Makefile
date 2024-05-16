@@ -1,5 +1,5 @@
 do:
-	yarn dev
+	npm run dev
 
 up:
 	docker build -t applica-corp .
@@ -8,3 +8,4 @@ up:
 down:
 	docker-compose down --volumes --remove-orphans
 
+updown: down up

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { ResponseBody } from '../utils/types.js'
+import { ResponseBody, User } from '../utils/types.js'
 import { requestPosts, requestUsers, requestComments } from '../gateway/jsonplaceholder.js';
 
 export async function getPosts(req: Request, res: Response): Promise<void> {
@@ -35,7 +35,7 @@ export async function getPosts(req: Request, res: Response): Promise<void> {
 
     await fetchUsersAndCommentsAsync(userIds, postIds, responseBody)
 
-    console.log('####################################')
+    console.log('responding')
     res.status(200).json(responseBody)
 }
 
@@ -44,6 +44,13 @@ async function fetchUsersAndCommentsAsync(
     postIds: number[],
     responseBody: ResponseBody[]): Promise<any|Error> {
 
+    /*
     await requestUsers(userIds[0], userIds[userIds.length-1], responseBody)
     await requestComments(postIds, responseBody)
+    */
+
+    await Promise.all([
+        requestUsers(userIds[0], userIds[userIds.length-1], responseBody),
+        requestComments(postIds, responseBody)
+    ])
 }

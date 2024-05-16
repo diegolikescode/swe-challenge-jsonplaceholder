@@ -35,7 +35,6 @@ export async function requestUsers(firstId: number, lastId: number, responseBody
     const url = `${BASE_URL_REQUEST}/users?_start=${firstId-1}&_limit=${lastId}`
     try {
         const resp = await fetch(url)
-        console.log('waiting for it')
         if (!resp.ok) {
             console.log('error fetching from', url, 'RESPONSE', resp)
             return []
@@ -44,6 +43,7 @@ export async function requestUsers(firstId: number, lastId: number, responseBody
         try {
             const users = await resp.json()
             mapUsersIntoResponseBody(responseBody, users)
+            console.log('requested users')
         } catch (e) {
             console.log('error parsing json at requestUsers', e)
             return []
@@ -74,6 +74,8 @@ export async function requestComments(postsId: number[], responseBody: ResponseB
             if (r.length === 0) return
             mapCommentsIntoResponseBody(responseBody, r)
         })
+
+        console.log('requested comments')
 
         return null
     } catch (e) {

@@ -4,10 +4,11 @@ services:
     image: applica-corp:latest
     restart: always
     container_name: applica-corp-api
-    ports:
-        - "8080:8080"
-    expose:
-        - "8080"
+    network_mode: host
+        # ports:
+        # - "8080:8080"
+        # expose:
+            # - "8080"
     deploy:
       resources:
         limits:
